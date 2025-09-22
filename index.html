@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>échelle
+	</title>
+
+	<link rel="preconnect" href="https://rsms.me/">
+	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+	<style>
+		* { margin: 0; box-sizing: border-box; }
+		:root {
+			font-family: Inter, sans-serif;
+			font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+		}
+		@supports (font-variation-settings: normal) {
+			:root { font-family: InterVariable, sans-serif; }
+		}
+
+		html,
+		body{
+			font-size: 16px;
+			line-height: 20px;
+		}
+
+		:root{
+			--border-width: 1px;
+			--border-color: #9CF;
+			--label-color: #69C;
+		}
+
+
+		.fontSizes {
+			margin-bottom: 4rem;;
+		}
+		
+		.fontSizes table{
+			border-collapse: collapse;
+		}
+		
+		
+		.fontSizes th, 
+		.fontSizes td {
+			border-bottom: 1pt solid #EEE;
+			text-align: right;
+			height: 48px;
+			padding: 1rem;
+		}
+		
+		.fontSizes tr:nth-of-type(5) td {
+			background-color: #F0F8FF;
+		}
+		
+		code{
+			font-family: monospace;
+			font-size: 12px;
+			background-color: #0000000a;
+			border-radius: 0.25em;
+			padding: 0.25em;
+		}
+
+		code::before{ content: "‹"; }
+		code::after{ content: "›"; }
+		code::before, code::after { color: #0003; }
+
+		.sample, .ui{
+			margin: 2em;
+			margin-bottom: 4rem;
+		}
+
+		.sample{
+
+			/* padding: var(--border-width); */
+			border-left: var(--border-width) solid var(--border-color);
+			border-right: var(--border-width) solid var(--border-color); 
+			background-color: #F8F8F8;
+			/* background: linear-gradient(90deg, #DDD, #FFF 5%, #FFF 95%, #DDD); */
+		}
+
+		#mobileMicro { width: calc(var(--border-width) * 2 + 320px); }
+		#mobileSmall { width: calc(var(--border-width) * 2 + 360px); }
+		#mobile      { width: calc(var(--border-width) * 2 + 400px); }
+		#mobileBig   { width: calc(var(--border-width) * 2 + 420px); }
+		#mobileJumbo { width: calc(var(--border-width) * 2 + 480px); }
+		#idealLine45 { width: calc(var(--border-width) * 2 + 45ch); }
+		#idealLine55 { width: calc(var(--border-width) * 2 + 55ch); }
+		#idealLine65 { width: calc(var(--border-width) * 2 + 65ch); }
+		#idealLine75 { width: calc(var(--border-width) * 2 + 75ch); }
+
+		.label{ 
+			font-weight: 300; 
+			font-size: 75%; 
+			color: var(--label-color); 
+			position: relative; top: -1rem; left: -2px;
+		}
+
+
+
+		.ui{
+			display: flex; gap: 8px 16px;
+			flex-wrap:wrap;
+		}
+		.ui h3 {
+			width: 100%;
+		}
+
+		.ui .UItarget { 
+			aspect-ratio: 1;
+			background-color: #EEE;
+			display: flex;
+			justify-content: center;
+			border: 1px solid var(--border-color);
+			color: #444;
+		}
+
+		#uiOptimal { }
+
+		#uiOptimal .UItarget { 
+			width: 44px; 
+			align-items: center;
+			font-size: 1.5rem;
+			border-radius: 8px;
+		}
+
+		#uiMinimal { 
+			gap: 8px 24px;
+		}
+
+		#uiMinimal .UItarget { 
+			width: 24px; 
+			align-items: center;
+			font-size: 1rem;
+			border-radius: 4px;
+		}
+	
+		button {
+			height: 44px;
+			font-size: 18px;
+			padding: 0 1rem;
+			border-radius: 0.5em;
+			background-color: #EEE;
+			background: linear-gradient(#F4F4F4, #e9e9e9);
+			border: 1px solid var(--border-color);
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<h2>Font Sizes</h2>
+
+	<div class="fontSizes">
+		<table>
+			<tr>	<th></th>						<th  																>Font size</th>		<th> HTML							</th>	<th>  &thinsp;px</th>	<th>    &thinsp;pt</th>		<th>      &thinsp;rem</td>			<!--<th> note </th>	-->	</tr>
+			<tr>	<td></td>						<td  class="font-size: xx-small;"	style="font-size: xx-small;"	> xx-small</td>		<td> &nbsp;							</td>	<td> 9&thinsp;px</td>	<td>6.75&thinsp;pt</td>		<td>0.5625&thinsp;rem</td>		<!--<td>9/16</td>	-->	</tr>
+			<tr>	<td></td>						<td  class="font-size: x-small;"	style="font-size: x-small;"		>  x-small</td>		<td> <code>h6</code>				</td>	<td>10&thinsp;px</td>	<td> 7.5&thinsp;pt </td>	<td> 0.625&thinsp;rem </td>		<!--<td>10/16</td>	-->	</tr>
+			<tr>	<td></td>						<td  class="font-size: small;"		style="font-size: small;"		>    small</td>		<td> <code>h5</code>				</td>	<td>13&thinsp;px</td>	<td>9.75&thinsp;pt </td>	<td>0.8125&thinsp;rem </td>		<!--<td>10/16</td>	-->	</tr>
+			<tr>	<td><b>Base default</b>	</td>	<td  class="font-size: medium;"		style="font-size: medium;"		>   medium</td>		<td> <code>p</code>	<code>h4</code>	</td>	<td>16&thinsp;px</td>	<td>  12&thinsp;pt  </td>	<td>     1&thinsp;rem</td>			<!--<td></td>		-->	</tr>
+			<tr>	<td></td>						<td  class="font-size: large;"		style="font-size: large;"		>    large</td>		<td> <code>h3</code>				</td>	<td>18&thinsp;px</td>	<td>13.5&thinsp;pt</td>		<td> 1.125&thinsp;rem</td>		<!--<td>9/8</td>	-->	</tr>
+			<tr>	<td></td>						<td  class="font-size: x-large;"	style="font-size: x-large;"		>  x-large</td>		<td> <code>h2</code>				</td>	<td>24&thinsp;px</td>	<td>  18&thinsp;pt  </td>	<td>   1.5&thinsp;rem</td>		<!--<td></td>		-->	</tr>
+			<tr>	<td></td>						<td  class="font-size: xx-large;"	style="font-size: xx-large;"	> xx-large</td>		<td> <code>h1</code>				</td>	<td>32&thinsp;px</td>	<td>  24&thinsp;pt  </td>	<td>     2&thinsp;rem</td>			<!--<td></td>		-->	</tr>
+			<tr>	<td></td>						<td  class="font-size: xxx-large;"	style="font-size: xxx-large;"	>xxx-large</td>		<td> &nbsp;							</td>	<td>48&thinsp;px</td>	<td>  36&thinsp;pt  </td>	<td>     3&thinsp;rem</td>			<!--<td></td>		-->	</tr>
+		</table>
+	</div>
+
+	<h2>Target Sizes</h2>
+	
+	<div class="ui" id="uiOptimal">
+		<h3 class="label">Touch target optimal: 44px + 16px space</h3>
+		<div class="UItarget">⌘</div>
+		<div class="UItarget">⌫</div>
+		<div class="UItarget">⎋</div>
+		<div class="UItarget">⇥</div>
+		<div class="UItarget">⌥</div>
+	</div>
+
+	<div class="ui" id="uiMinimal">
+		<h3 class="label">Touch target absolute minimum: 24px + 24px space</h3>
+		<div class="UItarget">⌘</div>
+		<div class="UItarget">⌫</div>
+		<div class="UItarget">⎋</div>
+		<div class="UItarget">⇥</div>
+		<div class="UItarget">⌥</div>
+	</div>
+
+	<div class="ui">
+		<h3 class="label">Button height: 44px, width at least ~100px</h3>
+		<button>button</button>
+	</div>
+
+	<h2>Device & column widths</h2>
+
+	<div class="sample" id="mobileMicro">
+		<h3 class="label">Mobile (smallest, iPhone 1): 320px</h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="sample" id="mobileSmall">
+		<h3 class="label">Mobile (smaller): 360px</h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="sample" id="mobile">
+		<h3 class="label">Mobile (average): 400px</h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="sample" id="mobileBig">
+		<h3 class="label">Mobile (larger average): 420px</h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="sample" id="mobileJumbo">
+		<h3 class="label">Mobile (bigger): 480px</h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="sample" id="idealLine45">
+		<h3 class="label">Line length: 45 characters minumum (~450px) </h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="sample" id="idealLine55">
+		<h3 class="label">Line length: 55 characters (~550px)</h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="sample" id="idealLine65">
+		<h3 class="label">Line length: 65 characters (~650px)</h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="sample" id="idealLine75">
+		<h3 class="label">Line length: 75 characters maximum (~750px)</h3>
+		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+</body>
+</html>
