@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,13 @@
 
 	<link rel="preconnect" href="https://rsms.me/">
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+	<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+
 	<style>
 
-		*[lang="fr"], *[lang="de"] { display: none}
+		*[lang="en"], 
+		*[lang="de"] { display: none}
 
 		* { margin: 0; box-sizing: border-box; }
 		
@@ -297,11 +301,40 @@
 		}
 		#REMscale #LogTwos .item:nth-of-type(1) .box { border-width: 0px; border-left: 1px solid var(--border-color);  }
 
+		small{ line-height: 1;}
 
+	</style>
 
+	<style>
+		@media print {
+			section{
+				break-inside: avoid;
+				margin: 0 !important;
+				margin-top: 0 !important;
+				margin-block-start: 0 !important;
+			}
+			body { 
+				padding:0; 
+				min-width: unset;
+				max-width: 180mm;
+			}
+			@page {
+				size: A4 portrait;
+				margin: 10mm 15mm;
+			}
 
+			#ScreenSizes .sample { display: none;}
+		
+			#ColumnWidths .sample { transform: scale(0.88); transform-origin: 0 0 }
 
+			#REMscale { transform: scale(0.75); transform-origin: 0 0; }
 
+			a::after{
+				content: " [" attr(href) "]";
+				font-size: 75%;
+				white-space: nowrap;
+			}
+		}
 	</style>
 
 </head>
@@ -352,7 +385,7 @@
 	<section>
 		<h2 lang="en">Font Sizes</h2>
 		<h2 lang="fr">Tailles en typographie</h2>
-		<h2 lang="de">Größen in der Typografie</h2>Retry
+		<h2 lang="de">Größen in der Typografie</h2>
 		<div class="fontSizes">
 			<table>
 				<tr>	<th></th>				<th 																	>font-size</th>		<th> HTML														</th>	<th>	  &thinsp;px</th>	<th>    &thinsp;pt</th>		<th>&thinsp;rem</td>														</tr>
@@ -474,7 +507,7 @@
 			<p> <code class="">p { max-width: 80ch; }</code></p>
 		</div>
 		<div class="information" lang="fr">
-			<p>Robert Bringhurst, dans <i>The Elements of Typographic Style</i>, suggère une longueur de ligne confortable entre 45 et 75 caractères.</p>
+			<p>Robert Bringhurst, dans <i>Principes élémentaires de la typographie</i>, suggère une longueur de ligne confortable entre 45 et 75 caractères.</p>
 			<p><small>Des longueurs de ligne plus courtes sont acceptables, utilisées couramment dans les journaux ou sur les petits appareils mobiles; 
 			mais les longueurs de ligne plus longues doivent être évitées sans exception.</small></p>
 			<p> <code class="">p { max-width: 80ch; }</code></p>
@@ -490,17 +523,20 @@
 			<h3 class="label" lang="en">Line length: 45 characters minimum (~450px | ~25rem)</h3>
 			<h3 class="label" lang="fr">Longueur de ligne: 45 caractères minimum (~450px | ~25rem)</h3>
 			<h3 class="label" lang="de">Zeilenlänge: 45 Zeichen Minimum (~450px | ~25rem) </h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna…</p></div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna…</p>
+		</div>
 		<div class="sample text" id="idealLine60">
 			<h3 class="label" lang="en">Line length: 60 characters (~600px | ~35rem)</h3>
 			<h3 class="label" lang="fr">Longueur de ligne: 60 caractères (~600px | ~35rem)</h3>
 			<h3 class="label" lang="de">Zeilenlänge: 60 Zeichen (~600px | ~35rem)</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis…</p></div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis…</p>
+		</div>
 		<div class="sample text" id="idealLine75">
 			<h3 class="label"  lang="en">Line length: 75 characters maximum (~750px | ~50rem)</h3>
 			<h3 class="label" lang="fr">Longueur de ligne: 75 caractères maximum (~750px | ~50rem)</h3>
 			<h3 class="label" lang="de">Zeilenlänge: 75 Zeichen Maximum (~750px | ~50rem)</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut…</p></div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut…</p>
+		</div>
 	</section>
 
 	<section>
