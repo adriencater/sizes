@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://rsms.me/">
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-	<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+	<!-- <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script> -->
 
 	<style>
 
@@ -30,8 +30,8 @@
 
 		html,
 		body{
-			font-size: 16px;
-			line-height: 20px;
+			/* font-size: 16px; */
+			line-height: 1.25;
 			/* overflow-x: hidden; */
 			min-width: 50rem;
 		}
@@ -118,7 +118,7 @@
 		
 		code{
 			font-family: monospace;
-			font-size: 12px;
+			font-size: 0.75rem;
 			background-color: #0000000a;
 			border-radius: 0.25em;
 			padding: 0.25em;
@@ -217,7 +217,7 @@
 	
 		button {
 			height: 44px;
-			font-size: 18px;
+			font-size: 1.25rem;
 			padding: 0 1rem;
 			border-radius: 0.5em;
 			corner-shape: squircle; /* should also enlarge the radius to compensate… */
@@ -307,6 +307,9 @@
 
 	<style>
 		@media print {
+			:root, html{
+				font-size: 10.5pt;
+			}
 			section{
 				break-inside: avoid;
 				margin: 0 !important;
@@ -569,7 +572,7 @@
 			<p>	<div class="sample" style="display: inline-block; width: 16px; height: 16px; margin: 0; border: none; background: var(--border-color);">&nbsp;</div>&emsp;1 REM</p>
 			<p>Nous pouvons donc utiliser des multiples du REM et maintenir une compatibilité facile avec la progression logarithmique en base 2.</p>
 		</div>
-		<p lang="fr"><small>Voici le lien pour la page wikipédia sur les <a href="https://fr.wikipedia.org/wiki/Nombres_préférentiels">«Nombres préférentiels»</a> 
+		<p lang="fr"><small>La page wikipédia sur les <a href="https://fr.wikipedia.org/wiki/Nombres_préférentiels">«Nombres préférentiels»</a> existe
 			en français, malheureusement moins complète que la version anglaise.</small></p>
 		
 			<h2 lang="de">REM und Vorzugszahlenreihen</h2>
@@ -585,7 +588,7 @@
 			<p><small>Dies entspricht auch dem traditionellen typografischen Maß des <i>Pica</i> oder <i>Cicero</i>.</small></p>
 			<p>	<div class="sample" style="display: inline-block; width: 16px; height: 16px; margin: 0; border: none; background: var(--border-color);">&nbsp;</div>&emsp;1 REM</p>
 			<p>Wir können daher Vielfache des REM verwenden und eine einfache Kompatibilität mit der logarithmischen Progression zur Basis 2 beibehalten.</p>
-			<p lang="de"><small>Hier ist der Link zur Wikipedia-Seite über <a href="https://de.wikipedia.org/wiki/Normzahl">«Vorzugszahlen»</a> 
+			<p lang="de"><small>Der Wikipedia-Seite über <a href="https://de.wikipedia.org/wiki/Normzahl">«Vorzugszahlen»</a> existiert
 				auf Deutsch, leider weniger vollständig als die englische Version.</small></p>
 		</div>
 		
