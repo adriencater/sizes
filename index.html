@@ -3,38 +3,83 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>échelle
-	</title>
+	<title>scale | échelle</title>
 
 	<link rel="preconnect" href="https://rsms.me/">
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 	<style>
+
+		*[lang="fr"], *[lang="de"] { display: none}
+
 		* { margin: 0; box-sizing: border-box; }
+		
 		:root {
 			font-family: Inter, sans-serif;
 			font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
 		}
+
 		@supports (font-variation-settings: normal) {
 			:root { font-family: InterVariable, sans-serif; }
 		}
+
+		body { padding: calc(0.5rem + 4vw); }
 
 		html,
 		body{
 			font-size: 16px;
 			line-height: 20px;
+			/* overflow-x: hidden; */
+			min-width: 50rem;
 		}
+
 
 		:root{
 			--border-width: 1px;
-			--border-color: #9CF;
-			--label-color: #69C;
+
+			--Color: hsl(200 85 55 );
+
+			--border-color: hsl( from var(--Color) h s 67% );
+			--label-color: hsl( from var(--Color) h s l );
 		}
 
+		.information{
+			margin: 2rem 0;
+			max-width: 65ch;
+			text-wrap: pretty;
+			/* text-wrap: balance; */
+		}
 
-		.fontSizes {
-			margin-bottom: 4rem;;
+		p.deco {
+			color: hsl(from var(--Color) h 100% 67%);
+			font-weight: 100;
+			text-align: center;
+			font-size: 2rem;
+			margin: 1em 0; padding-right: 25%;
 		}
 		
+		h1, h2, h3, h4, h5, h5, p {
+			margin-bottom: 0.5em;
+		}
+		
+		a {
+			color: hsl(from var(--Color) h 40% 40%);
+			text-underline-offset: 0.125em;
+			text-decoration-thickness: 1px;
+			text-decoration-color: hsl(from currentColor h 100% 80%);
+		}
+		a:hover{
+			background:  hsl(from currentColor h 100% 80%);
+		}
+
+
+		section:not(:first-of-type){
+			margin-block-start: 4rem;
+			padding-block-start: 1rem;
+			border-top: 1px dashed hsl(from var(--Color) h 25% 90%);
+			margin-block-end: 4rem;
+		}
+
+
 		.fontSizes table{
 			border-collapse: collapse;
 		}
@@ -45,12 +90,27 @@
 			border-bottom: 1pt solid #EEE;
 			text-align: right;
 			height: 48px;
-			padding: 1rem;
+			padding: 1rem 0;
+			padding-left: clamp(2px, 4vw, 2.5rem);
+			white-space: nowrap;
+			font-feature-settings: "tnum";
+		}
+
+		.fontSizes tr td:nth-of-type(1),
+		.fontSizes tr td:nth-of-type(2) {
+			white-space: normal;
+			line-height: 1;
+			padding-left:0.125em;
 		}
 		
 		.fontSizes tr:nth-of-type(5) td {
-			background-color: #F0F8FF;
+			background-color: hsl( from var(--Color) h 75% 97% );
 		}
+
+		.fontSizes small { font-size: 88%; }
+						.fontSizes td > small { font-weight: 450; }
+				.fontSizes td > small > small { font-weight: 500; }
+		.fontSizes td > small > small > small { font-weight: 550; }
 		
 		code{
 			font-family: monospace;
@@ -58,41 +118,57 @@
 			background-color: #0000000a;
 			border-radius: 0.25em;
 			padding: 0.25em;
+			margin-right: 0.25em;
+			white-space: nowrap;
 		}
 
-		code::before{ content: "‹"; }
-		code::after{ content: "›"; }
-		code::before, code::after { color: #0003; }
+		code.html::before{ content: "‹"; }
+		code.html::after{ content: "›"; }
+
+		code.css::before{ content: "{"; }
+		code.css::after{ content: "}"; }
+
+		code::before, code::after,
+		.sample.text,
+		.UItarget, button { color: #0006; }
+
 
 		.sample, .ui{
-			margin: 2em;
+			margin-top: 4em;
 			margin-bottom: 4rem;
 		}
 
 		.sample{
-
 			/* padding: var(--border-width); */
+			padding-left: calc( var(--border-width) * 1 );
+			border-top: var(--border-width) solid var(--border-color);
 			border-left: var(--border-width) solid var(--border-color);
 			border-right: var(--border-width) solid var(--border-color); 
 			background-color: #F8F8F8;
 			/* background: linear-gradient(90deg, #DDD, #FFF 5%, #FFF 95%, #DDD); */
 		}
 
+		.sample.text{
+			/* max-height: 2.5rem; overflow-y: hidden; */
+		}
+
 		#mobileMicro { width: calc(var(--border-width) * 2 + 320px); }
 		#mobileSmall { width: calc(var(--border-width) * 2 + 360px); }
 		#mobile      { width: calc(var(--border-width) * 2 + 400px); }
-		#mobileBig   { width: calc(var(--border-width) * 2 + 420px); }
+		#mobileBig   { width: calc(var(--border-width) * 2 + 440px); }
 		#mobileJumbo { width: calc(var(--border-width) * 2 + 480px); }
 		#idealLine45 { width: calc(var(--border-width) * 2 + 45ch); }
 		#idealLine55 { width: calc(var(--border-width) * 2 + 55ch); }
+		#idealLine60 { width: calc(var(--border-width) * 2 + 60ch); }
 		#idealLine65 { width: calc(var(--border-width) * 2 + 65ch); }
 		#idealLine75 { width: calc(var(--border-width) * 2 + 75ch); }
 
+		*:has(.label){ position: relative; }
 		.label{ 
-			font-weight: 300; 
-			font-size: 75%; 
+			font-weight: 400; 
+			font-size: 85%; 
 			color: var(--label-color); 
-			position: relative; top: -1rem; left: -2px;
+			position: absolute; top: -1.5rem; left: -2px;
 		}
 
 
@@ -111,7 +187,6 @@
 			display: flex;
 			justify-content: center;
 			border: 1px solid var(--border-color);
-			color: #444;
 		}
 
 		#uiOptimal { }
@@ -120,7 +195,8 @@
 			width: 44px; 
 			align-items: center;
 			font-size: 1.5rem;
-			border-radius: 8px;
+			border-radius: 0.33em;
+			corner-shape: squircle; /* should also enlarge the radius to compensate… */
 		}
 
 		#uiMinimal { 
@@ -131,7 +207,8 @@
 			width: 24px; 
 			align-items: center;
 			font-size: 1rem;
-			border-radius: 4px;
+			border-radius: 0.25em;
+			corner-shape: squircle; /* should also enlarge the radius to compensate… */
 		}
 	
 		button {
@@ -139,103 +216,371 @@
 			font-size: 18px;
 			padding: 0 1rem;
 			border-radius: 0.5em;
+			corner-shape: squircle; /* should also enlarge the radius to compensate… */
+			
 			background-color: #EEE;
 			background: linear-gradient(#F4F4F4, #e9e9e9);
 			border: 1px solid var(--border-color);
 		}
+
+
+		#ScreenSizes > * { }
+		#screen960  { /*flex: 1 960 ;  */ width: 960px; }
+		#screen1280 { /*flex: 1 1280 ; */ width: 1280px; }
+		#screen1440 { /*flex: 1 1440 ; */ width: 1440px; }
+		#ScreenSizes h3 { }
+
+
+		#ScreenSizes, #ColumnWidths { overflow-x: scroll; }
+
+
+
+		#REMscale{ 
+			--gap: 1px; 
+			display: flex;
+			gap: var(--gap);
+			margin: 4rem;
+		}
+
+		#REMscale > * {
+			display: flex;
+			flex-direction: column;
+			gap: var(--gap);
+		}
+
+		#LogTwos .item { display: flex; justify-content: flex-end; }
+
+		#LogThrees{ padding-top: 1px; }
+
+
+		#REMscale .item{
+			/* outline: 1px solid #F0F; */
+			position: relative;
+		}
+
+		#REMscale .measure {
+			font-feature-settings: "tnum";
+			width: 2.5rem;
+			position: absolute; left: -2.5rem; z-index: 2;
+			text-align: left;
+			padding-right: 0.25rem;
+
+			font-weight: 400; 
+			font-size: 85%; 
+			color: var(--label-color); 
+		}
+		#LogThrees .measure { left: unset; right: -2.5rem; text-align: right; padding-left: 0.25rem; }
+
+		#LogTwos .item:nth-of-type(1) .measure { left: 8.0rem; 	top:  0.0rem; }
+		#LogTwos .item:nth-of-type(2) .measure { left: 7.0rem; 	top:  0.2rem; }
+		#LogTwos .item:nth-of-type(3) .measure { left: 6.0rem; 	top:  0.4rem; }
+		#LogTwos .item:nth-of-type(4) .measure { left: 5.0rem; 	top:  0.8rem; }
+		#LogTwos .item:nth-of-type(5) .measure { left: 4.0rem; 	top:  1.0rem; }
+		#LogTwos .item:nth-of-type(6) .measure { left: 3.0rem; 	top:  1.5rem; }
+		#LogTwos .item:nth-of-type(7) .measure { left: 2.0rem; 	top:  2.0rem; }
+		#LogTwos .item:nth-of-type(8) .measure { left: 1.0rem; 	top:  2.0rem; }
+		#LogTwos .item:nth-of-type(9) .measure { left: 0.0rem; 	top: -1.5rem; }
+
+		#LogThrees .item:nth-of-type(1) .measure { right: 6.0rem; 	top:  0.0rem; }
+		#LogThrees .item:nth-of-type(2) .measure { right: 5.0rem; 	top:  0.2rem; }
+		#LogThrees .item:nth-of-type(3) .measure { right: 4.0rem; 	top:  0.6rem; }
+		#LogThrees .item:nth-of-type(4) .measure { right: 3.0rem; 	top:  1.0rem; }
+		#LogThrees .item:nth-of-type(5) .measure { right: 2.0rem; 	top:  1.0rem; }
+		#LogThrees .item:nth-of-type(6) .measure { right: 1.0rem; 	top:  1.5rem; }
+		#LogThrees .item:nth-of-type(7) .measure { right: 0.0rem; 	top: -1.5rem; }
+
+
+		#REMscale .box{ 
+			background: linear-gradient(#F8F8F8, #FFF) ;
+			border: 1px solid var(--border-color); 
+			aspect-ratio: 1;
+		}
+		#REMscale #LogTwos .item:nth-of-type(1) .box { border-width: 0px; border-left: 1px solid var(--border-color);  }
+
+
+
+
+
 
 	</style>
 
 </head>
 <body>
 
-	<h2>Font Sizes</h2>
-
-	<div class="fontSizes">
-		<table>
-			<tr>	<th></th>						<th  																>Font size</th>		<th> HTML							</th>	<th>  &thinsp;px</th>	<th>    &thinsp;pt</th>		<th>      &thinsp;rem</td>			<!--<th> note </th>	-->	</tr>
-			<tr>	<td></td>						<td  class="font-size: xx-small;"	style="font-size: xx-small;"	> xx-small</td>		<td> &nbsp;							</td>	<td> 9&thinsp;px</td>	<td>6.75&thinsp;pt</td>		<td>0.5625&thinsp;rem</td>		<!--<td>9/16</td>	-->	</tr>
-			<tr>	<td></td>						<td  class="font-size: x-small;"	style="font-size: x-small;"		>  x-small</td>		<td> <code>h6</code>				</td>	<td>10&thinsp;px</td>	<td> 7.5&thinsp;pt </td>	<td> 0.625&thinsp;rem </td>		<!--<td>10/16</td>	-->	</tr>
-			<tr>	<td></td>						<td  class="font-size: small;"		style="font-size: small;"		>    small</td>		<td> <code>h5</code>				</td>	<td>13&thinsp;px</td>	<td>9.75&thinsp;pt </td>	<td>0.8125&thinsp;rem </td>		<!--<td>10/16</td>	-->	</tr>
-			<tr>	<td><b>Base default</b>	</td>	<td  class="font-size: medium;"		style="font-size: medium;"		>   medium</td>		<td> <code>p</code>	<code>h4</code>	</td>	<td>16&thinsp;px</td>	<td>  12&thinsp;pt  </td>	<td>     1&thinsp;rem</td>			<!--<td></td>		-->	</tr>
-			<tr>	<td></td>						<td  class="font-size: large;"		style="font-size: large;"		>    large</td>		<td> <code>h3</code>				</td>	<td>18&thinsp;px</td>	<td>13.5&thinsp;pt</td>		<td> 1.125&thinsp;rem</td>		<!--<td>9/8</td>	-->	</tr>
-			<tr>	<td></td>						<td  class="font-size: x-large;"	style="font-size: x-large;"		>  x-large</td>		<td> <code>h2</code>				</td>	<td>24&thinsp;px</td>	<td>  18&thinsp;pt  </td>	<td>   1.5&thinsp;rem</td>		<!--<td></td>		-->	</tr>
-			<tr>	<td></td>						<td  class="font-size: xx-large;"	style="font-size: xx-large;"	> xx-large</td>		<td> <code>h1</code>				</td>	<td>32&thinsp;px</td>	<td>  24&thinsp;pt  </td>	<td>     2&thinsp;rem</td>			<!--<td></td>		-->	</tr>
-			<tr>	<td></td>						<td  class="font-size: xxx-large;"	style="font-size: xxx-large;"	>xxx-large</td>		<td> &nbsp;							</td>	<td>48&thinsp;px</td>	<td>  36&thinsp;pt  </td>	<td>     3&thinsp;rem</td>			<!--<td></td>		-->	</tr>
-		</table>
+	<section>
+	<div class="information">
+		<div lang="en">
+			<h1>The scale of things</h1>
+			<p>Designing on the screen has a pitfall: the ability to zoom in and out as we work. 
+			<br>This is useful: zoom out to appreciate an overview, or zoom in to adjust a fine detail; 
+			<br>but it is easy to get lost, and this can lead to errors if we make design decisions while observing at the wrong scale.</p>
+		</div>
+		<div lang="fr">
+			<h1>L’échelle des choses</h1>
+			<p>Concevoir sur écran comporte un piège: la possibilité de zoomer et dézoomer pendant le travail. 
+				C’est utile: dézoomer pour apprécier une vue d’ensemble, ou aggrandir pour ajuster un détail fin, 
+				mais il est facile de se perdre, et cela peut mener à des erreurs si nous prenons des 
+				décisions de design en observant à la mauvaise échelle.</p>
+		</div>
+		<div lang="de">
+			<h1>Die Größenordnung der Dinge</h1>
+			<p>Das Entwerfen am Bildschirm hat eine Falle: die Möglichkeit, während der Arbeit hinein- und herauszuzoomen. 
+				Das ist nützlich: herauszoomen, um einen Überblick zu schätzen, oder hineinzoomen, um ein feines Detail anzupassen, 
+				aber es ist leicht, sich zu verlieren, und dies kann zu Fehlern führen, wenn wir Designentscheidungen treffen, 
+				während wir im falschen Maßstab beobachten.</p>
+		</div>
+		<p class="deco">⊕ &nbsp; ⊖</p>
+		<div lang="en">
+			<p>It is essential for items to be designed at the proper scale, 
+			<br>therefore we must develop an intuitive sense of the default size of elements.
+			<br><small>(Even if our designs will break the guidelines, we must start with the defaults.)</small></p>
+		</div>
+		<div lang="fr">
+			<p>Il est essentiel que les éléments soient conçus à la bonne échelle, 
+			<br>nous devons donc développer un sens intuitif de la taille par défaut des éléments.
+			<br><small>(Même si nos designs s’affranchiront des règles, nous devons commencer par les valeurs par défaut.)</small></p>
+		</div>
+		<div lang="de">
+			<p>Es ist wesentlich, dass Elemente im richtigen Maßstab entworfen werden, 
+			<br>daher müssen wir ein intuitives Gespür für die Standardgröße von Elementen entwickeln.
+			<br><small>(Auch wenn unsere Designs von den Richtlinien abweichen, müssen wir mit den Standards beginnen.)</small></p>
+		</div>
 	</div>
 
-	<h2>Target Sizes</h2>
+	</section>
 	
-	<div class="ui" id="uiOptimal">
-		<h3 class="label">Touch target optimal: 44px + 16px space</h3>
-		<div class="UItarget">⌘</div>
-		<div class="UItarget">⌫</div>
-		<div class="UItarget">⎋</div>
-		<div class="UItarget">⇥</div>
-		<div class="UItarget">⌥</div>
-	</div>
+	<section>
+		<h2 lang="en">Font Sizes</h2>
+		<h2 lang="fr">Tailles en typographie</h2>
+		<h2 lang="de">Größen in der Typografie</h2>Retry
+		<div class="fontSizes">
+			<table>
+				<tr>	<th></th>				<th 																	>font-size</th>		<th> HTML														</th>	<th>	  &thinsp;px</th>	<th>    &thinsp;pt</th>		<th>&thinsp;rem</td>														</tr>
+				<tr>	<td></td>				<td class="xx-small;"	style="font-size: xx-small;	font-weight:550"	> xx-small</td>		<td> &nbsp;														</td>	<td>	 9&thinsp;px</td>	<td>6.75&thinsp;pt</td>		<td>0.5<small>6<small>2<small>5</small></small></small>&thinsp;rem</td>		</tr>
+				<tr>	<td></td>				<td class="x-small;"	style="font-size: x-small;	font-weight:500"	>  x-small</td>		<td> <code class="html">h6</code>								</td>	<td>	10&thinsp;px</td>	<td> 7.5&thinsp;pt </td>	<td>0.6<small>2<small>5</small></small>&thinsp;rem </td>					</tr>
+				<tr>	<td></td>				<td class="small;"		style="font-size: small;	font-weight:450"	>    small</td>		<td> <code class="html">h5</code>								</td>	<td>	13&thinsp;px</td>	<td>9.75&thinsp;pt </td>	<td>0.8<small>1<small>2<small>5</small></small></small>&thinsp;rem </td>	</tr>
+				<tr>	<td><b>Base</b></td>	<td class="medium;"		style="font-size: medium;	font-weight:400"	>   medium</td>		<td> <code class="html">p</code><code class="html">h4</code>	</td>	<td> <b>16&thinsp;px</b></td>	<td>  12&thinsp;pt  </td>	<td>1&thinsp;rem</td>														</tr>
+				<tr>	<td></td>				<td class="large;"		style="font-size: large;	font-weight:350"	>    large</td>		<td> <code class="html">h3</code>								</td>	<td>	18&thinsp;px</td>	<td>13.5&thinsp;pt</td>		<td>1.1<small>2<small>5</small></small>&thinsp;rem</td>						</tr>
+				<tr>	<td></td>				<td class="x-large;"	style="font-size: x-large;	font-weight:300"	>  x-large</td>		<td> <code class="html">h2</code>								</td>	<td>	24&thinsp;px</td>	<td>  18&thinsp;pt  </td>	<td>1.5&thinsp;rem</td>														</tr>
+				<tr>	<td></td>				<td class="xx-large;"	style="font-size: xx-large;	font-weight:250"	> xx-large</td>		<td> <code class="html">h1</code>								</td>	<td>	32&thinsp;px</td>	<td>  24&thinsp;pt  </td>	<td>2&thinsp;rem</td>														</tr>
+				<tr>	<td></td>				<td class="xxx-large;"	style="font-size: xxx-large;font-weight:200"	>xxx-large</td>		<td> &nbsp;														</td>	<td>	48&thinsp;px</td>	<td>  36&thinsp;pt  </td>	<td>3&thinsp;rem</td>														</tr>
+			</table>
+			<div lang="en" class="information">The default scale can be used in CSS <br>with the font-size keywords: <code class="css">font-size: xxx-large;</code></div>
+			<div lang="fr" class="information">L’échelle par défaut peut être utilisée en CSS <br>avec les mots-clés font-size: <code class="css">font-size: xxx-large;</code></div>
+			<div lang="de" class="information">Der Standardmaßstab kann in CSS mit den font-size-Schlüsselwörtern verwendet werden: <code class="css">font-size: xxx-large;</code></div>
+		</div>
+	</section>
+	
+	<section>
+		<h2 lang="en">Touch target Sizes</h2>
+		<h2 lang="fr">Taille des zones tactiles</h2>
+		<h2 lang="de">Größen der Touch-Ziele</h2>
 
-	<div class="ui" id="uiMinimal">
-		<h3 class="label">Touch target absolute minimum: 24px + 24px space</h3>
-		<div class="UItarget">⌘</div>
-		<div class="UItarget">⌫</div>
-		<div class="UItarget">⎋</div>
-		<div class="UItarget">⇥</div>
-		<div class="UItarget">⌥</div>
-	</div>
+		<div class="ui" id="uiOptimal">
+			<h3 class="label" lang="en">Optimal touch target: <b>44px</b> + 16px space</h3>
+			<h3 class="label" lang="fr">Zone tactile optimale: <b>44px</b> + 16px d’espacement</h3>
+			<h3 class="label" lang="de">Optimales Touch-Ziel: <b>44px</b> + 16px Abstand</h3>
+			<div class="UItarget">⌘</div>
+			<div class="UItarget">⌫</div>
+			<div class="UItarget">⎋</div>
+			<div class="UItarget">⇥</div>
+			<div class="UItarget">⌥</div>
+		</div>
 
-	<div class="ui">
-		<h3 class="label">Button height: 44px, width at least ~100px</h3>
-		<button>button</button>
-	</div>
+		<div class="ui" id="uiMinimal">
+			<h3 class="label" lang="en">Absolute minimum touch target: 24px + 24px space</h3>
+			<h3 class="label" lang="fr">Zone tactile minimum absolu: 24px + 24px d’espacement</h3>
+			<h3 class="label" lang="de">Absolutes Minimum Touch-Ziel: 24px + 24px Abstand</h3>
+			<div class="UItarget">⌘</div>
+			<div class="UItarget">⌫</div>
+			<div class="UItarget">⎋</div>
+			<div class="UItarget">⇥</div>
+			<div class="UItarget">⌥</div>
+		</div>
 
-	<h2>Device & column widths</h2>
+		<div class="ui">
+			<h3 class="label" lang="en">Button height: 44px</h3>
+			<h3 class="label" lang="fr">Hauteur du bouton : 44px</h3>
+			<h3 class="label" lang="de">Button-Höhe: 44px</h3>
+			<button>button</button>
+		</div>
+	</section>
 
-	<div class="sample" id="mobileMicro">
-		<h3 class="label">Mobile (smallest, iPhone 1): 320px</h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
+	<section>
+		<h2 lang="en">Mobile device widths</h2>
+		<h2 lang="fr">Largeurs des appareils mobiles</h2>
+		<h2 lang="de">Breiten mobiler Geräte</h2>
+		<div class="sample device" id="mobileSmall">
+			<h3 class="label" lang="en">Mobile (small): 360px</h3>
+			<h3 class="label" lang="fr">Mobile (petit): 360px</h3>
+			<h3 class="label" lang="de">Mobil (kleiner): 360px</h3>
+		<p>&nbsp;</p></div>
+		<div class="sample device" id="mobile">
+			<h3 class="label" lang="en">Mobile (average): 400px</h3>
+			<h3 class="label" lang="fr">Mobile (moyen): 400px</h3>
+			<h3 class="label" lang="de">Mobil (durchschnittlich): 400px</h3>
+		<p>&nbsp;</p></div>
+		<div class="sample device" id="mobileBig">
+			<h3 class="label" lang="en">Mobile (big): 440px</h3>
+			<h3 class="label" lang="fr">Mobile (grand): 440px</h3>
+			<h3 class="label" lang="de">Mobil (groß): 440px</h3>
+		<p>&nbsp;</p></div>
 
-	<div class="sample" id="mobileSmall">
-		<h3 class="label">Mobile (smaller): 360px</h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
+	</section>
 
-	<div class="sample" id="mobile">
-		<h3 class="label">Mobile (average): 400px</h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
+	<section id="ScreenSizes">
+		<h2 lang="en">Desktop / browser windows</h2>
+		<h2 lang="fr">Desktop / fenêtres de navigateur</h2>
+		<h2 lang="de">Desktop / Browserfenster</h2>
+		<div class="information" lang="en">
+			<p>On computers with larger screens, browser windows are often resized, 
+				so there is no real correlation between screen size and viewport size above ~1280px.</p>
+			<p>Web page dimensions are effectively &ensp;<b>? × ∞</b> <br>that is, an <i>unknown</i> width (therefore responsive or ideally, fluid) 
+			<br>and up to <i>infinite</i> height (page length is primarily an editorial or UX concern).</p>
+			<p>Traditional target window width, or grid system base measure: <b>960px</b></p>
+			<p>Figma web design template: <b>1280px</b></p>
+		</div>
+		<div class="information" lang="fr">
+			<p>Sur les écrans plus grands, les fenêtres de navigateur sont souvent redimensionnées, 
+				il n’y a donc pas de corrélation forte entre la taille de l’écran et la taille de la fenêtre d’affichage au-delà de ~1280px.</p>
+			<p>Les dimensions des pages web sont effectivement &ensp;<b>? × ∞</b> <br>c’est-à-dire une largeur <i>inconnue</i> (donc responsive ou idéalement, fluide) 
+			<br>et une hauteur <i>infinie</i> (la longueur de page est principalement une préoccupation éditoriale ou UX).</p>
+			<p>Largeur de fenêtre cible traditionnelle, ou mesure de base du système de grid: <b>960px</b></p>
+			<p>Modèle de design web Figma: <b>1280px</b></p>
+		</div>
+		<div class="information" lang="de">
+			<p>Auf Computern mit größeren Bildschirmen werden Browserfenster oft in der Größe verändert, sodass es oberhalb von ~1280px keine wirkliche 
+				Korrelation zwischen Bildschirmgröße und Viewport-Größe gibt.</p>
+			<p>Webseiten-Dimensionen sind effektiv &ensp;<b>? × ∞</b> <br>das heißt, eine <i>unbekannte</i> Breite (daher responsiv oder idealerweise fluid) 
+			<br>und eine <i>unendliche</i> Höhe (die Seitenlänge ist in erster Linie eine redaktionelle oder UX-Angelegenheit).</p>
+			<p>Traditionelle Zielfensterbreite oder Basissmaß des Grid-Systems: <b>960px</b></p>
+			<p>Figma-Webdesign-Vorlage: <b>1280px</b></p>
+		</div>
+		<div>
+			<div class="sample device" id="screen960" ><h3 class="label">Desktop / base: 960px</h3><p>&nbsp;</p></div>
+			<div class="sample device" id="screen1280"><h3 class="label">Desktop: 13": 1280px</h3><p>&nbsp;</p></div>
+			<div class="sample device" id="screen1440"><h3 class="label">Desktop 15": 1440px</h3><p>&nbsp;</p></div>
+		</div>
+	</section>
 
-	<div class="sample" id="mobileBig">
-		<h3 class="label">Mobile (larger average): 420px</h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
+	<section id="ColumnWidths">
+		<h2 lang="en">Column widths</h2>
+		<h2 lang="fr">Longueur des lignes / largeur des colonnes</h2>
+		<h2 lang="de">Zeilenlänge / Spaltenbreite</h2>
+		<div class="information" lang="en">
+			<p>Robert Bringhurst, in <i>The Elements of Typographic Style</i>, suggests a comfortable line-length between 45 and 75 characters.</p>
+			<p><small>Shorter line lengths are acceptable, used commonly in newspapers or small mobile devices; 
+				<br>but longer line lengths should be avoided without exception.</small></p>
+			<p> <code class="">p { max-width: 80ch; }</code></p>
+		</div>
+		<div class="information" lang="fr">
+			<p>Robert Bringhurst, dans <i>The Elements of Typographic Style</i>, suggère une longueur de ligne confortable entre 45 et 75 caractères.</p>
+			<p><small>Des longueurs de ligne plus courtes sont acceptables, utilisées couramment dans les journaux ou sur les petits appareils mobiles; 
+			mais les longueurs de ligne plus longues doivent être évitées sans exception.</small></p>
+			<p> <code class="">p { max-width: 80ch; }</code></p>
+		</div>
+		<div class="information" lang="de">
+			<p>Robert Bringhurst schlägt in <i>The Elements of Typographic Style</i> eine komfortable Zeilenlänge zwischen 45 und 75 Zeichen vor.</p>
+			<p><small>Kürzere Zeilenlängen sind akzeptabel, werden häufig in Zeitungen oder auf kleinen mobilen Geräten verwendet; aber längere Zeilenlängen sollten ausnahmslos vermieden werden.</small></p>
+			<p> <code class="">p { max-width: 80ch; }</code></p>
+		</div>
 
-	<div class="sample" id="mobileJumbo">
-		<h3 class="label">Mobile (bigger): 480px</h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
 
-	<div class="sample" id="idealLine45">
-		<h3 class="label">Line length: 45 characters minumum (~450px) </h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
+		<div class="sample text" id="idealLine45">
+			<h3 class="label" lang="en">Line length: 45 characters minimum (~450px | ~25rem)</h3>
+			<h3 class="label" lang="fr">Longueur de ligne: 45 caractères minimum (~450px | ~25rem)</h3>
+			<h3 class="label" lang="de">Zeilenlänge: 45 Zeichen Minimum (~450px | ~25rem) </h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna…</p></div>
+		<div class="sample text" id="idealLine60">
+			<h3 class="label" lang="en">Line length: 60 characters (~600px | ~35rem)</h3>
+			<h3 class="label" lang="fr">Longueur de ligne: 60 caractères (~600px | ~35rem)</h3>
+			<h3 class="label" lang="de">Zeilenlänge: 60 Zeichen (~600px | ~35rem)</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis…</p></div>
+		<div class="sample text" id="idealLine75">
+			<h3 class="label"  lang="en">Line length: 75 characters maximum (~750px | ~50rem)</h3>
+			<h3 class="label" lang="fr">Longueur de ligne: 75 caractères maximum (~750px | ~50rem)</h3>
+			<h3 class="label" lang="de">Zeilenlänge: 75 Zeichen Maximum (~750px | ~50rem)</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut…</p></div>
+	</section>
 
-	<div class="sample" id="idealLine55">
-		<h3 class="label">Line length: 55 characters (~550px)</h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
+	<section>
+		<h2 lang="en">REM and preferred number series</h2>
+		<div class="information" lang="en">
+			<p>In the design process, <a href="https://en.wikipedia.org/wiki/Preferred_number">preferred numbers</a> 
+				are standard guidelines for choosing dimensions.</p>
+			<p>In manufacturing and construction, this standardization provides material efficiencies; 
+			<br>in design, this standardization provides conceptual efficiency and visual coherence.</p>
+			<p>In computers, we tend to use the base-2 series: <br>1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 …</p>
+			<p>In screen design, a second complementary scale, offset by 50% is also used:<br>
+				3, 6, 12, 24, 48, 96, 192, 384, 768, 1536 …</p>
+			<p>The default font size for text on the screen is <b>16px</b>, or one <b>REM</b> (Root-EM)</p>
+			<p><small>This also corresponds to the traditional type measurement of the <i>pica</i>, or <i>cicéro</i>.</small></p>
+			<p><div class="sample" style="display: inline-block; width: 16px; height: 16px; margin: 0; border: none; background: var(--border-color);">&nbsp;</div>&emsp;1 REM</p>
+			<p>We can therefore use multiples of the REM and maintain an easy compatibility with the base-2 logarithmic progression.</p>
+		</div>
+		
+		<h2 lang="fr">REM et séries de nombres préférentiels</h2>
+		<div class="information" lang="fr">
+			<p>Dans le processus de design, les nombres préférentiels <a href="https://en.wikipedia.org/wiki/Preferred_number">(preferred numbers)</a> 
+			sont des raccourcis standard pour choisir des dimensions.</p>
+			<p>En fabrication et construction, cette standardisation apporte des économies de matériaux; en design, cette 
+				standardisation apporte une efficacité conceptuelle et une cohérence visuelle.</p>
+			<p>En informatique, nous utilisons généralement la série en base 2: <br>1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 …</p>
+			<p>En design d'écran, une seconde échelle complémentaire, décalée de 50% est également utilisée:<br>
+				3, 6, 12, 24, 48, 96, 192, 384, 768, 1536 …</p>
+			<p>La taille de police par défaut pour le texte à l'écran est <b>16px</b>, ou un <b>REM</b> (Root-EM)</p>
+			<p><small>Cela correspond également à la mesure typographique traditionnelle du <i>pica</i>, ou <i>cicéro</i>.</small></p>
+			<p>	<div class="sample" style="display: inline-block; width: 16px; height: 16px; margin: 0; border: none; background: var(--border-color);">&nbsp;</div>&emsp;1 REM</p>
+			<p>Nous pouvons donc utiliser des multiples du REM et maintenir une compatibilité facile avec la progression logarithmique en base 2.</p>
+		</div>
+		<p lang="fr"><small>Voici le lien pour la page wikipédia sur les <a href="https://fr.wikipedia.org/wiki/Nombres_préférentiels">«Nombres préférentiels»</a> 
+			en français, malheureusement moins complète que la version anglaise.</small></p>
+		
+			<h2 lang="de">REM und Vorzugszahlenreihen</h2>
+		<div class="information" lang="de">
+			<p>Im Designprozess sind Vorzugszahlen <a href="https://en.wikipedia.org/wiki/Preferred_number">(preferred numbers)</a> Standardrichtlinien 
+				zur Auswahl von Dimensionen innerhalb eines gegebenen Satzes von Beschränkungen.</p>
+			<p>In Fertigung und Bau bietet diese Standardisierung Materialeffizienz; 
+			<br>im Design bietet diese Standardisierung konzeptionelle Effizienz und visuelle Kohärenz.</p>
+			<p>In Computern verwenden wir üblicherweise die Zweierpotenzen: <br>1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 …</p>
+			<p>Im Bildschirmdesign wird auch eine zweite komplementäre Skala verwendet, um 50% versetzt:<br>
+				3, 6, 12, 24, 48, 96, 192, 384, 768, 1536 …</p>
+			<p>Die Standardschriftgröße für Text am Bildschirm ist <b>16px</b>, oder ein <b>REM</b> (Root-EM)</p>
+			<p><small>Dies entspricht auch dem traditionellen typografischen Maß des <i>Pica</i> oder <i>Cicero</i>.</small></p>
+			<p>	<div class="sample" style="display: inline-block; width: 16px; height: 16px; margin: 0; border: none; background: var(--border-color);">&nbsp;</div>&emsp;1 REM</p>
+			<p>Wir können daher Vielfache des REM verwenden und eine einfache Kompatibilität mit der logarithmischen Progression zur Basis 2 beibehalten.</p>
+			<p lang="de"><small>Hier ist der Link zur Wikipedia-Seite über <a href="https://de.wikipedia.org/wiki/Normzahl">«Vorzugszahlen»</a> 
+				auf Deutsch, leider weniger vollständig als die englische Version.</small></p>
+		</div>
+		
+		<div id="REMscale">
+			<div id="LogTwos">
+				<div class="item">	<div class="measure label">  1</div>	<div class="box" style="width:   1px;"></div>	</div>
+				<div class="item">	<div class="measure label">  2</div>	<div class="box" style="width:   2px;"></div>	</div>
+				<div class="item">	<div class="measure label">  4</div>	<div class="box" style="width:   4px;"></div>	</div>
+				<div class="item">	<div class="measure label">  8</div>	<div class="box" style="width:   8px;"></div>	</div>
+				<div class="item">	<div class="measure label"> 16</div>	<div class="box" style="width:  16px;"></div>	</div>
+				<div class="item">	<div class="measure label"> 32</div>	<div class="box" style="width:  32px;"></div>	</div>
+				<div class="item">	<div class="measure label"> 64</div>	<div class="box" style="width:  64px;"></div>	</div>
+				<div class="item">	<div class="measure label">128</div>	<div class="box" style="width: 128px;"></div>	</div>
+				<div class="item">	<div class="measure label">256</div>	<div class="box" style="width: 256px;"></div>	</div>
+			</div>
+			<divmn id="LogThrees">
+				<div class="item">	<div class="measure label">  3</div>	<div class="box" style="width:   3px;"></div>	</div>
+				<div class="item">	<div class="measure label">  6</div>	<div class="box" style="width:   6px;"></div>	</div>
+				<div class="item">	<div class="measure label"> 12</div>	<div class="box" style="width:  12px;"></div>	</div>
+				<div class="item">	<div class="measure label"> 24</div>	<div class="box" style="width:  24px;"></div>	</div>
+				<div class="item">	<div class="measure label"> 48</div>	<div class="box" style="width:  48px;"></div>	</div>
+				<div class="item">	<div class="measure label"> 96</div>	<div class="box" style="width:  96px;"></div>	</div>
+				<div class="item">	<div class="measure label">192</div>	<div class="box" style="width: 192px;"></div>	</div>
+			</div>
+		</div>
 
-	<div class="sample" id="idealLine65">
-		<h3 class="label">Line length: 65 characters (~650px)</h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
+		<!-- <div class="information">
+			<p>Likewise, grid systems often use a 12 or 24 unit grid, <br>as this can be easily subdivided into 2, 3, 4, or 6 columns.</p>
+		</div> -->
+	</section>
 
-	<div class="sample" id="idealLine75">
-		<h3 class="label">Line length: 75 characters maximum (~750px)</h3>
-		<p>Robert Bringhurst, in The Elements of Typographic Style, puts a comfortable line-length between 45 and 75 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
 
 </body>
 </html>
